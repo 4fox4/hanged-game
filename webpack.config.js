@@ -1,31 +1,29 @@
-module.exports = {
-  context: __dirname + "/src",
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
-  entry: {
-    javascript: "./index.js",
-    html: __dirname + "/index.html"
-  },
-
+const config = {
+  entry: './src/index.js',
   output: {
-    filename: "app.js",
-    path: __dirname + "/app/js",
+    path: path.resolve(__dirname, 'app'),
+    filename: 'app.js'
   },
-
   resolve: {
     extensions: ['.js', '.jsx', '.json']
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ["babel-loader"]
-      },
-      {
-        test: /\.html$/,
-        loader: "file?name=[name].[ext]",
+        loaders: ["react-hot-loader", "babel-loader"]
       }
     ]
-  }
-
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new HtmlWebpackPlugin({template: './src/index.html'})
+  ]
 };
+
+module.exports = config;
