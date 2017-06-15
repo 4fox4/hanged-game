@@ -1,0 +1,86 @@
+.Game {
+  width: 100%;
+  color: darkgrey;
+}
+
+.Game-score {
+  display: inline-block;
+  padding: 10px;
+  background-color: rgba(245, 106, 0, 0.64);
+  border-radius: 0 0 15px 15px;
+  color: white;
+}
+
+.Game-indication {
+  font-size: 25px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.Game-word-fr {
+  font-size: 40px;
+  margin: 20px 0;
+  text-align: center;
+  color: #666;
+}
+
+.Game-word-en {
+  font-size: 35px;
+  margin: 20px 0;
+  text-align: center;
+  color: #666;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Game-word-item {
+  text-align: center;
+  width: 35px;
+  height: 40px;
+  line-height: 40px;
+  border: 2px solid #f56a00;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+.Game-char-hide {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.Game-input-container {
+  /*position: fixed;
+  bottom: 0;
+  left: 0;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*background-color: #f56a00;*/
+  width: 100%;
+  height: 50px;
+}
+
+.Game-input {
+  /*background-color: #f56a00;*/
+  padding: 0;
+  border: 0;
+  border: 2px solid #f56a00;
+  height: 40px;
+  width: calc(100% - 10px);
+  border-radius: 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 27px;
+  color: #666;
+  /*color: white;*/
+}
+
+.Game-input:focus {
+  outline: 0;
+}
+
+.Game-input::placeholder {
+  color: #bbb;
+}

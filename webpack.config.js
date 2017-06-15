@@ -17,6 +17,10 @@ const config = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ["react-hot-loader", "babel-loader"]
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
       }
     ]
   },

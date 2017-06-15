@@ -1,0 +1,24 @@
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+.App-header {
+  width: 100%;
+  height: 64px;
+  background-color: #f56a00;
+  color: white;
+}
+
+.App-title {
+  height: 64px;
+  line-height: 64px;
+  font-size: 25px;
+  margin-left: 20px;
+}
+
+.App-content {
+  height: calc(100% - 64px);
+  max-width: 960px;
+  margin: 0 auto;
+}
