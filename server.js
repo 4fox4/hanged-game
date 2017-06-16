@@ -25,11 +25,10 @@ MongoClient.connect('mongodb://houlekhi:houlekhi@ds129462.mlab.com:29462/hanged-
     console.log(result);
     if (result.length === 0) {
       var data = fs.readFileSync('verbe.txt');
-      // var regex = new RegExp('\r\n|\r|\n');
       var wordsArray = data.toString().split("\n");
       for (var i = 0; i < 500; i++) {
         console.log('mot[' + i + ']=' + wordsArray[i]);
-        db.collection('words').insertOne({word:wordsArray[i].trim()}, function(err, r) {
+        db.collection('words').insertOne({index: i, word:wordsArray[i].trim()}, function(err, r) {
           assert.equal(null, err);
           assert.equal(1, r.insertedCount);
         });
@@ -47,4 +46,12 @@ app.get('/', function (req, res) {
 
 app.get('/word', function (req, res) {
   console.log('GET /word');
+  var random = Math.floor(Math.floor(Math.random() * 500));
+  console.log(random);
+  db.collection('words').find({index: random}).limit(1).next(function(err, doc) {
+    console.log(doc);
+    assert.equal(null, err);
+    assert.ok(doc != null);
+    db.close();
+  });
 });
