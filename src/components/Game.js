@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Game.css';
+import fetch from 'node-fetch';
 
 class Game extends Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class Game extends Component {
     };
     this.keyPress = this.keyPress.bind(this);
     this.getWord = this.getWord.bind(this);
-    this.getWordSplitted = this.getWordSplitted.bind(this);
     this.replayGame = this.replayGame.bind(this);
     this.continueGame = this.continueGame.bind(this);
   }
@@ -33,50 +33,64 @@ class Game extends Component {
 
   componentDidMount() {
     console.log('componentDidMount call');
-    var word = this.getWord();
-    var wordSplited = this.getWordSplitted(word);
-    this.setState({
-      word: word,
-      splited: wordSplited
-    });
+
+    this.getWord(function(err, res){
+      res.bind.setState({
+        word: res.word,
+        splited: res.splited
+      });
+    })
   }
 
-  getWordSplitted(word) {
-    var frSplited = word.fr.split('');
-    var enSplited = word.en.split('');
-    var wordSplited = {
-      fr: frSplited,
-      en: enSplited
-    };
-    return wordSplited;
-  }
-
-  getWord() {
+  getWord(callback) {
     console.log('getWord Call');
-    var word = { fr: 'bonjour', en: 'hello' };
-    return word;
+
+    var word = { fr: 'salut', en: 'hello' };
+
+    fetch('http://localhost:3000/word')
+      .then(response => response.json())
+      .then(json => {
+        var words;
+        console.log(json);
+        word = { fr: json.fr, en: json.en };
+
+        var frSplited = word.fr.split('');
+        var enSplited = word.en.split('');
+        var wordSplited = {
+          fr: frSplited,
+          en: enSplited
+        };
+
+        words = {
+          word: word,
+          splited: wordSplited,
+          bind: this
+        };
+        callback(null, words);
+      });
+
   }
 
   continueGame() {
-    var word = this.getWord();
-    var wordSplited = this.getWordSplitted(word);
-    this.setState({
-      word: word,
-      splited: wordSplited,
-      success: false
-    });
+    this.getWord(function(err, res){
+      res.bind.setState({
+        word: res.word,
+        splited: res.splited,
+        success: false
+      });
+    })
   }
 
   replayGame() {
-    var word = this.getWord();
-    var wordSplited = this.getWordSplitted(word);
-    this.setState({
-      word: word,
-      splited: wordSplited,
-      score: 10,
-      success: false,
-      replay: false
-    });
+    this.getWord(function(err, res){
+      res.bind.setState({
+        word: res.word,
+        splited: res.splited,
+        score: 10,
+        success: false,
+        replay: false
+      });
+    })
   }
 
   loseOrWinCheck(points) {
