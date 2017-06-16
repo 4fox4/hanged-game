@@ -19,10 +19,6 @@ class App extends Component {
     return (diffProps || diffState);
   }
 
-  componentDidMount() {
-    
-  }
-
   startGame() {
     console.log('startGame call');
     this.setState({ start: true });

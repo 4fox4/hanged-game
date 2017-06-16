@@ -83,4 +83,36 @@
 
 .Game-input::placeholder {
   color: #bbb;
+  font-size: 22px;
+}
+
+.Game-button-replay {
+  background-color: #f56a00;
+  padding: 0;
+  border: 0;
+  border: 2px solid #f56a00;
+  height: 40px;
+  line-height: 40px;
+  width: calc(100% - 10px);
+  border-radius: 20px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 27px;
+  /*color: #666;*/
+  cursor: pointer;
+  color: white;
+}
+
+.Game-button-replay:focus {
+  background-color: #f78e3d;
+}
+
+.Game-win {
+  color: #f56a00;
+  font-size: 40px;
+}
+
+.Game-lose {
+  color: #f56a00;
+  font-size: 40px;
 }

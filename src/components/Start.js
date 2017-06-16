@@ -7,15 +7,11 @@ class Start extends Component {
     this.state = {}
   }
 
-  componentDidMount() {
-
-  }
-  
   render() {
     return (
       <div className='Start'>
         <div className='Start-indication'>Click to play</div>
-        <div className='Start-button' onClick={this.props.onClick}>Click</div>
+        <div className='Start-button' onClick={this.props.onClick}>PLAY</div>
       </div>
     );
   }
