@@ -16,5 +16,6 @@ npm install
 ## Start server
 
 ```
-npm start # this command compile project then start server
+npm start
 ```
+this command compile project then start server
