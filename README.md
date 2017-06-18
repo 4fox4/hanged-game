@@ -3,9 +3,8 @@ A kind of Hangman game based on the translation of french words
 
 ## Required
 
-• node
-
-• npm
+- node
+- npm
 
 ## Install dependencies
 
