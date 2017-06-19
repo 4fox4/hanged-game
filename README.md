@@ -9,17 +9,33 @@ A kind of Hangman game based on the translation of french words
 - npm
 
 ### Install dependencies
-
 ```
 npm install
 ```
 
-### Start server
-
+### Start build & serve project
 ```
 npm start
 ```
-this command compile project then start server
+This command builds project then start server
+
+### Start build & serve for development
+```
+npm run dev
+```
+This command builds project then start server with hot load
+
+### Build project
+```
+npm run build
+```
+This command builds only the project
+
+### Start server only
+```
+npm run server
+```
+This command only serves the project
 
 #
 
@@ -33,3 +49,7 @@ this command compile project then start server
   - React / Babel / Webpack
 - DB
   - MongoDB
+
+### Detail fonctionnement
+
+1. 
