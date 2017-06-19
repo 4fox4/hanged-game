@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-// var server = require('http').Server(app);
 var http = require('http');
 var bodyParser= require('body-parser');
 var fs = require('fs');
@@ -66,8 +65,6 @@ app.get('/word', function (req, res) {
     })
   });
 });
-
-
 
 function getWordTranslation(word, callback) {
   var options = {
