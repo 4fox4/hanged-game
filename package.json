@@ -7,6 +7,7 @@
     "start": "node ./node_modules/webpack/bin/webpack && node ./server.js",
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --history-api-fallback",
     "build": "node ./node_modules/webpack/bin/webpack",
+    "server": "node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

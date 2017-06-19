@@ -42,17 +42,23 @@ class Game extends Component {
     })
   }
 
+  handleErrors(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response;
+  }
+
   getWord(callback) {
     console.log('getWord Call');
 
-    var word = { fr: 'salut', en: 'hello' };
-
     fetch('http://localhost:3000/word')
+      .then(this.handleErrors)
       .then(response => response.json())
       .then(json => {
         var words;
         console.log(json);
-        word = { fr: json.fr, en: json.en };
+        var word = { fr: json.fr, en: json.en };
 
         var frSplited = word.fr.split('');
         var enSplited = word.en.split('');
@@ -67,8 +73,26 @@ class Game extends Component {
           bind: this
         };
         callback(null, words);
-      });
+      }).catch(error => {
+        var words;
+        var word = { fr: 'salut', en: 'hello' };
+        var frSplited = word.fr.split('');
+        var enSplited = word.en.split('');
+        var wordSplited = {
+          fr: frSplited,
+          en: enSplited
+        };
 
+        words = {
+          word: word,
+          splited: wordSplited,
+          bind: this
+        };
+        callback(null, words);
+        console.log("Fetch error: ", error);
+        console.log("If you're in the development mode. It's ok, the 'word' is initialized to { fr: 'salut', en: 'hello' } for simulation and test");
+        console.log("If not, run: 'npm start' for build and start server");
+      });
   }
 
   continueGame() {
@@ -133,7 +157,7 @@ class Game extends Component {
   }
 
   checkWord(word) {
-    if (word === this.state.word.en) {
+    if (word.toLowerCase() === this.state.word.en) {
       this.successWord();
     } else {
       this.failWord();
@@ -152,7 +176,7 @@ class Game extends Component {
       <div className='Game'>
         { this.state.word.fr && this.state.splited.fr ?
           <div>
-            <div className='Game-score'>Score: {this.state.score} pts</div>
+            <div className='Game-score'>Score {this.state.score} pts</div>
 
             { !this.state.replay ?
                 <div className='Game-indication'>Reussirez-vous à traduire ce mot en anglais ?</div> :
@@ -181,7 +205,7 @@ class Game extends Component {
                   <div className='Game-button-replay' onClick={this.replayGame}>Replay Game</div> :
                   ( this.state.success ?
                     <div className='Game-button-replay' onClick={this.continueGame}>Continue</div> :
-                    <input placeholder='Tapez la réponse ici' className='Game-input' type='text' onKeyPress={this.keyPress} />
+                    <input placeholder='Tapez la réponse ici' className='Game-input' type='text' onKeyPress={this.keyPress} autoFocus />
                   )
               }
             </div>
