@@ -12,6 +12,9 @@ const config = {
     extensions: ['.js', '.jsx', '.json']
   },
   module: {
+    loaders: [
+      { test: /\.json$/, loader: "json-loader"}
+    ],
     rules: [
       {
         test: /\.jsx?$/,

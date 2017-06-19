@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Game.css';
-import fetch from 'node-fetch';
+import fetch from 'isomorphic-fetch';
 
 class Game extends Component {
   constructor(props) {
