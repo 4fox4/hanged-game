@@ -21,14 +21,15 @@ npm start
 ```
 this command compile project then start server
 
-
-
-
 #
-
-
-
 
 ## Fonctionnement technique
 
 ### Tech stack
+
+- Back-end
+-- Node.js / Express.js
+- Front-end
+-- React / Babel / Webpack
+- DB
+-- MongoDB
