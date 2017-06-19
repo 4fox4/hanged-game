@@ -28,8 +28,8 @@ this command compile project then start server
 ### Tech stack
 
 - Back-end
--- Node.js / Express.js
+  - Node.js / Express.js
 - Front-end
--- React / Babel / Webpack
+  - React / Babel / Webpack
 - DB
--- MongoDB
+  - MongoDB
