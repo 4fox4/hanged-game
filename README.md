@@ -36,11 +36,11 @@ This command builds only the project
 npm run server
 ```
 This command only serves the project
- 
- 
+
+
 #
- 
- 
+
+
 ## Fonctionnement technique
 
 ### Tech stack
@@ -52,6 +52,8 @@ This command only serves the project
 - DB
   - MongoDB
 
+Ce projet est un début de Progressive Web App (PWA). Possibilité d'exporter cette web app sous forme d'application, sans avoir à télécharger sur un store (compatible Chrome Android), il suffit de cliquer sur "Options" (3 petits points verticaux) puis "Ajouter à l'écran d'accueil". L'app sera import alors sur l'appareil. À l'ouverture, l'apparence est sous la forme d'une application native.
+
 ### Details & fonctionnement
 
 **Base de donnée MongoDB** peuplée de 500 verbes français, connectée à un **serveur Node.js / Express** (/server.js).
@@ -61,7 +63,7 @@ Ce même serveur écoute sur le port 3000, et répond aux méthodes GET avec les
 • '/' pour servir l'app développée en **React** (/src), transpillée avec **BabelJS** (JS ES6) au travers de **Webpack** (loaders) qui rendra en sortie un fichier app.js minifié constitué de l'intégralité de l'app React ainsi que l'index.html (/app).
 
 • '/word' qui renverra en réponse un objet "words" contenant le mot en français, récupéré sur la base de donnée MongoDB de manière aléatoire, ainsi que la traduction en anglais de ce mot, recupérée depuis une **API de traduction (Yandex Translate)**.
-  
+
 La réponse à cette requete sera de la forme {fr: String, en: String}.
 Une fois, récupéré sur l'app coté client, la reponse sera traitée et mettra à jours certains états de composants.
 
@@ -74,3 +76,11 @@ Cela engendrera une mise à jour des composants liés.
 - [ ] Sauvegarde locale des scores de reussite (via localStorage).
 - [ ] Le support d'autres langues (en changeant lavaleur de la clé "lang" de la requete sur l'API de traduction).
 - [ ] Le support du mode "Hors connexion", permettant de pouvoir utiliser l'appli sans connexion réseau (via les service worker, en gardant en mémoire dans le localStorage un certain nombre de mots. Les service worker permettront d'intercepter les requetes et de pouvoir y repondre en local).
+- [ ] Amélioration du support Progressive Web App.
+
+### Temps réalisation
+
+- Réalisation projet
+  - 1,5 jours
+- Debug / Clean
+  - 0,5 jours
